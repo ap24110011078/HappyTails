@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Pets for Adoption</h2>
+{% if pets %}
+    <div class="grid">
+        {% for pet in pets %}
+        <div class="card pet-card">
+            <div class="pet-avatar">
+                {% if pet.type|lower == 'dog' or pet.type|lower == 'puppy' %}
+                    🐶
+                {% elif pet.type|lower == 'cat' or pet.type|lower == 'kitten' %}
+                    🐱
+                {% elif pet.type|lower == 'bird' or pet.type|lower == 'parrot' %}
+                    🦜
+                {% elif pet.type|lower == 'rabbit' or pet.type|lower == 'bunny' %}
+                    🐰
+                {% elif pet.type|lower == 'pig' or pet.type|lower == 'guinea pig' %}
+                    🐷
+                {% elif pet.type|lower == 'snake' %}
+                    🐍
+                {% elif pet.type|lower == 'fish' or pet.type|lower == 'goldfish' %}
+                    🐟
+                {% elif pet.type|lower == 'turtle' or pet.type|lower == 'tortoise' %}
+                    🐢
+                {% elif pet.type|lower == 'hamster' %}
+                    🐹
+                {% elif pet.type|lower == 'mouse' %}
+                    🐭
+                {% elif pet.type|lower == 'rat' %}
+                    🐀
+                {% elif pet.type|lower == 'horse' or pet.type|lower == 'pony' %}
+                    🐴
+                {% elif pet.type|lower == 'frog' or pet.type|lower == 'toad' %}
+                    🐸
+                {% elif pet.type|lower == 'lizard' or pet.type|lower == 'gecko' or pet.type|lower == 'iguana' %}
+                    🦎
+                {% elif pet.type|lower == 'spider' or pet.type|lower == 'tarantula' %}
+                    🕷️
+                {% elif pet.type|lower == 'cow' %}
+                    🐮
+                {% elif pet.type|lower == 'goat' %}
+                    🐐
+                {% elif pet.type|lower == 'sheep' %}
+                    🐑
+                {% elif pet.type|lower == 'chicken' or pet.type|lower == 'rooster' %}
+                    🐔
+                {% elif pet.type|lower == 'duck' %}
+                    🦆
+                {% elif pet.type|lower == 'monkey' %}
+                    🐒
+                {% elif pet.type|lower == 'ferret' or pet.type|lower == 'weasel' %}
+                    🦦
+                {% else %}
+                    🐾
+                {% endif %}
+            </div>
+            <h3>{{ pet.name }}</h3>
+            <p><strong>Type:</strong> {{ pet.type }}</p>
+            <p><strong>Age:</strong> {{ pet.age }}</p>
+            <br>
+            <a href="{{ url_for('adopt', pet_id=pet.pet_id) }}" class="btn">Adopt Me!</a>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state card">
+        <p>No pets available for adoption right now. Check back later!</p>
+    </div>
+{% endif %}
+{% endblock %}

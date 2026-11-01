@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Our Partner Shelters</h2>
+{% if shelters %}
+    <div class="grid">
+        {% for shelter in shelters %}
+        <div class="card">
+            <div class="pet-avatar">
+                🏡
+            </div>
+            <h3>{{ shelter.name }}</h3>
+            <p><strong>Location:</strong> {{ shelter.location }}</p>
+            <p><strong>Contact:</strong> {{ shelter.contact }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state card">
+        <p>No shelters found in the system.</p>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPYTAILS ADOPTION | Pet Adoption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Animated floating background container -->
+    <div class="animation-container">
+        <div class="floating-item" style="left: 5%; animation-duration: 12s; animation-delay: 0s; font-size: 4rem;">🐾
+        </div>
+        <div class="floating-item" style="left: 25%; animation-duration: 16s; animation-delay: 2s; font-size: 6rem;">🐾
+        </div>
+        <div class="floating-item" style="left: 45%; animation-duration: 10s; animation-delay: 1s; font-size: 5rem;">🐾
+        </div>
+        <div class="floating-item" style="left: 65%; animation-duration: 18s; animation-delay: 4s; font-size: 7rem;">🐾
+        </div>
+        <div class="floating-item" style="left: 85%; animation-duration: 14s; animation-delay: 0s; font-size: 5.5rem;">
+            🐾</div>
+    </div>
+
+    <!-- Floating Contact Card -->
+    <div class="floating-contact">
+        <h4>Contact Us 🐾</h4>
+        <p><strong>Team Dataheads</strong><br>
+            Priya, Saketh, Priyal, Aryan</p>
+        <p><span class="contact-icon">✉️</span> teamhappytails.com</p>
+        <p><span class="contact-icon">📞</span> +1 234 567 8900</p>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 1;">
+        <header>
+            <h1>HAPPYTAILS ADOPTION🐾</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Available Pets</a>
+                <a href="{{ url_for('add_pet') }}">Add Pet</a>
+                <a href="{{ url_for('adopted_pets') }}">Adopted Pets</a>
+                <a href="{{ url_for('shelters') }}">Shelters</a>
+                <a href="{{ url_for('staff') }}">Staff</a>
+                <a href="{{ url_for('vaccinations') }}">Vaccinations</a>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+
+</html>

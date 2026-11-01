@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Happily Adopted Pets</h2>
+{% if adopted_list %}
+<table>
+    <thead>
+        <tr>
+            <th>Pet Name</th>
+            <th>Type</th>
+            <th>Adopter Name</th>
+            <th>Adoption Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in adopted_list %}
+        <tr>
+            <td>{{ record.pet_name }}</td>
+            <td>{{ record.type }}</td>
+            <td>{{ record.adopter_name }}</td>
+            <td>{{ record.adoption_date.strftime('%Y-%m-%d %H:%M') if record.adoption_date else 'Unknown' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state card">
+    <p>No pets have been adopted yet.</p>
+</div>
+{% endif %}
+{% endblock %}

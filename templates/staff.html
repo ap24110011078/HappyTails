@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Our Dedicated Staff</h2>
+{% if staff_list %}
+    <div class="grid">
+        {% for staff in staff_list %}
+        <div class="card">
+            <div class="pet-avatar">
+                👩‍⚕️
+            </div>
+            <h3>{{ staff.name }}</h3>
+            <p><strong>Role:</strong> {{ staff.role }}</p>
+            <p><strong>Shelter:</strong> {{ staff.shelter_name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state card">
+        <p>No staff records found in the system.</p>
+    </div>
+{% endif %}
+{% endblock %}

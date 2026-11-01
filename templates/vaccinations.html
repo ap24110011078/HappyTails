@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Pet Vaccination Records</h2>
+{% if vaccinations %}
+    <div class="grid">
+        {% for v in vaccinations %}
+        <div class="card">
+            <div class="pet-avatar">
+                💉
+            </div>
+            <h3>{{ v.vaccine_name }}</h3>
+            <p><strong>Pet Name:</strong> {{ v.pet_name }}</p>
+            <p><strong>Date:</strong> {{ v.vaccination_date }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state card">
+        <p>No vaccination records found in the system.</p>
+    </div>
+{% endif %}
+{% endblock %}
